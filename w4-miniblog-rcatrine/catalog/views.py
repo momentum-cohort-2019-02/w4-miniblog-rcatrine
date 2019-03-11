@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 
 # Create your views here.
-from catalog.models import Blog, Blogger, BlogInstance
+from catalog.models import Blog, Author, BlogInstance
 
 def index(request):
     """View function for home page of site."""
@@ -15,7 +15,7 @@ def index(request):
     num_instances_available = BlogInstance.objects.filter(status__exact='a').count()
     
     # The 'all()' is implied by default.    
-    num_bloggers = Blogger.objects.count()
+    num_authors = Author.objects.count()
 
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
@@ -25,7 +25,7 @@ def index(request):
         'num_blogs': num_blogs,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
-        'num_bloggers': num_bloggers,
+        'num_authors': num_authors,
         'num_visits': num_visits,
     }
 
@@ -42,10 +42,10 @@ class BlogDetailView(generic.DetailView):
     model = Blog
 
 
-class BloggerListView(generic.ListView):
-    model = Blogger
+class AuthorListView(generic.ListView):
+    model = Author
     paginate_by = 3
 
 
-class BloggerDetailView(generic.DetailView):
-    model = Blogger
+class AuthorDetailView(generic.DetailView):
+    model = Author

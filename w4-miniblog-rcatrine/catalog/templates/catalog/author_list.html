@@ -2,11 +2,11 @@
 
 {% block content %}
   <h1>Blogger List</h1>
-  {% if blogger_list %}
+  {% if author_list %}
   <ul>
-    {% for blogger in blogger_list %}
+    {% for author in author_list %}
       <li>
-        <a href="{{ blogger.get_absolute_url }}">{{ blogger }}</a>
+        <a href="{{ author.get_absolute_url }}">{{ author }}</a>
       </li>
     {% endfor %}
   </ul>
