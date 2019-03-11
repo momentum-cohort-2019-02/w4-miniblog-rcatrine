@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ blog.title }}</h1>
+
+  <p><strong>Blogger:</strong> <a href="{% url 'blogger-detail' blog.blogger.pk %}">{{ blog.blogger }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Blog Entry:</strong> {{ blog.summary }}</p>
+<!-- 
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Entries</h4>
+
+    {% for entry in blog.bloginstance_set.all %}
+      <hr>
+      <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+      {% if copy.status != 'a' %}
+        <p><strong>Due to be returned:</strong> {{copy.due_back}}</p>
+      {% endif %}
+      <p><strong>Imprint:</strong> {{copy.imprint}}</p>
+      <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p> -->
+    {% endfor %}
+  <!-- </div> -->
+{% endblock %}

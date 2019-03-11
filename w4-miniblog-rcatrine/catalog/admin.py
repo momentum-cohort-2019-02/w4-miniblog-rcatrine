@@ -1,21 +1,21 @@
 from django.contrib import admin
-from catalog.models import Author, Blog, BlogInstance
+from catalog.models import Blogger, Blog, BlogInstance
 
 # Define the admin class
-class AuthorAdmin(admin.ModelAdmin):
+class BloggerAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name',)
     fields = ['first_name', 'last_name',]
 
 
 # Register the admin class with the associated model
-admin.site.register(Author, AuthorAdmin)
+admin.site.register(Blogger, BloggerAdmin)
 
 class BlogInstanceInline(admin.TabularInline):
     model = BlogInstance
 # Register the Admin classes for Blog using the decorator
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author',)
+    list_display = ('title', 'blogger',)
     inlines = [BlogInstanceInline]
 
 
